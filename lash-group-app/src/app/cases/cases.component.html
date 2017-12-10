@@ -1,0 +1,14 @@
+<div layout-align="center center" class="main-div">
+<p>
+  Filter Options
+</p>
+<hr>
+<ul class="heroes">
+  <li *ngFor="let case of cases"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+    <span class="badge">{{case.statusKey}}</span> {{case.name}}
+  </li>
+</ul>
+
+</div>

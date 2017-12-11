@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerService } from '../server.service';
+
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-cases',
@@ -9,40 +12,10 @@ import { Component, OnInit } from '@angular/core';
 export class CasesComponent implements OnInit {
 
   filteredCases = '';
-  case = [];
 
-  cases = [{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"},
-{"statusKey":"Completed","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "PA"},
-{"statusKey":"Completed","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"InProgress","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"},
-{"statusKey":"Completed","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "PA"},
-{"statusKey":"Completed","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"InProgress","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "PA"},
-{"statusKey":"Completed","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"},
-{"statusKey":"Completed","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "PA"},
-{"statusKey":"InProgress","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"Completed","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"Completed","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "PA"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"},
-{"statusKey":"Completed","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"InProgress","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "PA"},
-{"statusKey":"ActionNeeded","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "BV"},
-{"statusKey":"InProgress","patientID": 1234, "dob": "02/02/1979", "name": "Adam, Jones", "serviceID": 6789, "service": "CoPay"}];
+  cases = this.onGet();
 
-  services = ["CoPay","BV", "PA", "AM", "ANT"];
+  caseservices = ["CoPay","BV", "PA", "AM", "ANT"];
 
   getStatusClasses(cases: {statusKey:string, patientID:number, dob: string, name:string, serviceID: number, service:string}) {
        
@@ -91,9 +64,25 @@ export class CasesComponent implements OnInit {
 
        return returnValue;
     }
-  constructor() { }
+  constructor(private serverService: ServerService) { }
+
+  onSave(){
+    this.serverService.storeServers(this.cases)
+    .subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+      );
+  }
+   onGet(){
+    this.serverService.getServers()
+    .subscribe(
+           (servers: any[]) => this.cases = servers,
+      (error) => console.log(error)
+      );
+  }
 
   ngOnInit() {
+
   }
 
 }

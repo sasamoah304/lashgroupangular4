@@ -3,12 +3,37 @@
   Filter Options
 </p>
 <hr>
-<ul class="heroes">
-  <li *ngFor="let case of cases"
-    [class.selected]="hero === selectedHero"
-    (click)="onSelect(hero)">
-    <span class="badge">{{case.statusKey}}</span> {{case.name}}
-  </li>
-</ul>
+<div>Service Types 
+ <select  [(ngModel)]="filteredCases">
+    <option *ngFor="let service of services" [ngValue]="service">
+        {{service}}
+    </option>
+</select>
+</div>
+
+   <div class="row">
+    <ul class="col-md-12">
+        <li class="thumbnail" *ngFor="let service of services">
+           
+            <div class="caption">
+                <h3>{{service}}</h3>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2"></div>
+
+		<ul class="list-group-item ">
+		  <li class="list-group-item" *ngFor="let case of cases | filter: filteredCases:'service'">
+		    <span [ngClass] = "getStatusClasses(case)" [ngStyle] = "{color : getStyle(case)}"></span> &nbsp;&nbsp; <span class="color:blue">{{ case.name}} </span>&nbsp; {{'Patient ID: '+ case.patientID}} &nbsp; {{'Date of Birth: '+ case.dob}} &nbsp; {{'Service ID: '+ case.serviceID}} &nbsp; <div id="service" [ngClass] = "getServiceClasses(case)">{{case.service}}</div>
+		  </li>
+		</ul>
+		
+	</div>
+	
+</div>
 
 </div>

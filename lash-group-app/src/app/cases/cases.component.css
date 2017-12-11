@@ -1,15 +1,32 @@
-/* HeroesComponent's private CSS styles */
+/*/* HeroesComponent's private CSS styles */
+#service {
+  display: inline-block;
+  width: 100px
+}
+.label {
+  min-width: 100px
+}
+.main-div {
+  padding-left: 20px;
+  padding-right: 20px
+}
+.thumbnail{
+   float:left;
+    width: 15%;
+  }
+
+  /* HeroesComponent's private CSS styles */
 .selected {
   background-color: #CFD8DC !important;
   color: white;
 }
-.heroes {
+.cases {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 15em;
+  width: 100%;
 }
-.heroes li {
+.cases li {
   cursor: pointer;
   position: relative;
   left: 0;
@@ -19,20 +36,20 @@
   height: 1.6em;
   border-radius: 4px;
 }
-.heroes li.selected:hover {
+.cases li.selected:hover {
   background-color: #BBD8DC !important;
   color: white;
 }
-.heroes li:hover {
+.cases li:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
 }
-.heroes .text {
+.cases .text {
   position: relative;
   top: -3px;
 }
-.heroes .badge {
+.cases .badge {
   display: inline-block;
   font-size: small;
   color: white;
@@ -45,9 +62,4 @@
   height: 1.8em;
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
-}
-
-.main-div {
-  padding-left: 20px;
-  padding-right: 20px
 }

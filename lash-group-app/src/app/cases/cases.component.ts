@@ -13,9 +13,11 @@ export class CasesComponent implements OnInit {
 
   filteredCases = '';
 
+  // cases: any[] = [];
+
   cases = this.onGet();
 
-  caseservices = ["CoPay","BV", "PA", "AM", "ANT"];
+  caseservices = ["Benefit Verification", "Prior Authorization", "CoPay","PAP", "Prescription Referal"];
 
   getStatusClasses(cases: {statusKey:string, patientID:number, dob: string, name:string, serviceID: number, service:string}) {
        

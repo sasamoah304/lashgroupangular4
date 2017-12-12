@@ -10,24 +10,51 @@
     </option>
 </select>
 </div>
-   <div class="row">
-    <ul class="col-md-12">
-        <li class="thumbnail" *ngFor="let service of caseservices">         
-            <div class="caption">
-                {{service}}
-            </div>
-        </li>
-    </ul>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 text-center key">
+			<span><b>Service Type</b> &nbsp;&nbsp; </span>
+			<span *ngFor="let service of caseservices">
+					<span class="label label-success"><div class="label label-success"></div></span>&nbsp;&nbsp; <span >{{service}}</span>
+			</span>
+		</div>	
+	</div>
 </div>
-<button class="btn btn-primary" (click) = "onGet()">Get Servers</button>
+
+<div class="container">
+	<div class="row ">
+		<div class="col-lg-6 col-lg-offset-3 text-center key"> <b>Status Key </b> &nbsp;&nbsp; 
+				    <span class="glyphicon glyphicon-circle-arrow-right" style="color: green">
+		                
+		            </span> &nbsp;
+		            <span class="caption">
+		                Completed
+		            </span> &nbsp;&nbsp;
+		            <span class="glyphicon glyphicon-circle-arrow-down" style="color: blue">
+		                
+		            </span> &nbsp;
+		             <span class="caption">
+		                In Progress
+		            </span> &nbsp;&nbsp;
+		            <span class="glyphicon glyphicon-circle-arrow-up" style="color: red">
+		                
+		            </span> &nbsp; 
+		            <span class="caption">
+		                ActionNeeded
+		            </span>
+		</div>	
+	</div>
+</div>
+
+<!-- <button class="btn btn-primary" (click) = "onGet()">Get Servers</button> -->
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2"></div>
+		<div class="col-lg-10 col-lg-offset-1"></div>
 
-		<ul class="list-group-item ">
+		<ul class="list-group-item">
 		  <li class="list-group-item" *ngFor="let case of cases | filter: filteredCases:'service'">
-		    <span [ngClass] = "getStatusClasses(case)" [ngStyle] = "{color : getStyle(case)}"></span> &nbsp;&nbsp; <span class="color:blue">{{ case.name}} </span>&nbsp; {{'Patient ID: '+ case.patientID}} &nbsp; {{'Date of Birth: '+ case.dob}} &nbsp; {{'Service ID: '+ case.serviceID}} &nbsp; <div id="service" [ngClass] = "getServiceClasses(case)">{{case.service}}</div>
+		    <span [ngClass] = "getStatusClasses(case)" [ngStyle] = "{color : getStyle(case)}"></span> &nbsp;&nbsp; <span class="color:blue">{{ case.name}} </span>&nbsp;&nbsp; {{'Patient ID: '+ case.patientID}} &nbsp;&nbsp; {{'Date of Birth: '+ case.dob}} &nbsp;&nbsp; {{'Service ID: '+ case.serviceID}} &nbsp;&nbsp; <div id="service" [ngClass] = "getServiceClasses(case)">{{case.service}}</div>
 		  </li>
 		</ul>
 		

@@ -17,7 +17,13 @@ export class CasesComponent implements OnInit {
 
   cases = this.onGet();
 
-  caseservices = ["Benefit Verification", "Prior Authorization", "CoPay","PAP", "Prescription Referal"];
+  caseservices = [
+  {"id" :"14", "name" :"Benefit Verification", "service":"BV"}, 
+  {"id" :"14", "name":"Prior Authorization", "service":"PA"}, 
+  {"id" :"14", "name":"CoPay", "service":"CoPay"},
+  {"id" :"14", "name" :"PAP", "service":"PAP"},
+  {"id" :"14", "name": "Prescription Referal", "service":"PR"}
+  ];
 
   getStatusClasses(cases: {statusKey:string, patientID:number, dob: string, name:string, serviceID: number, service:string}) {
        
@@ -54,18 +60,27 @@ export class CasesComponent implements OnInit {
     getServiceClasses(cases: {statusKey:string, patientID:number, dob: string, name:string, serviceID: number, service:string}) {
        
        var returnValue = "";
-       if(cases.service === 'CoPay'){
-         returnValue = 'label label-primary'
-       }
-       if(cases.service === 'BV'){
-         returnValue = 'label label-success'
-       }
-       if(cases.service === 'PA'){
-         returnValue = 'label label-warning'
-       }
+
+          switch (cases.service) {
+            case 'CoPay':
+                returnValue = 'label label-primary'
+                break;
+            case 'BV':
+                returnValue = 'label label-success'
+                break;
+            case 'PA':
+                returnValue = 'label label-warning'
+                break;
+
+            case 'PAP':
+                returnValue = 'label label-info'
+                break;
+            default: returnValue = 'label label-default'
+        }
 
        return returnValue;
     }
+
   constructor(private serverService: ServerService) { }
 
   onSave(){

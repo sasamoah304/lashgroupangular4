@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
- // import { Dashboard } from '../dashboardItem';
+ // import { Cases } from '../cases/cases.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,12 +12,12 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   dashboardItems  = [
-  { id: 11, name: 'Mr. Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' }
-];
+  {"id" :"14", "name" :"Benefit Verification", "service":"BV"}, 
+  {"id" :"14", "name":"Prior Authorization", "service":"PA"}, 
+  {"id" :"14", "name":"CoPay", "service":"CoPay"},
+  {"id" :"14", "name" :"PAP", "service":"PAP"},
+  {"id" :"14", "name": "Prescription Referal", "service":"PR"}
+  ];
 
   constructor() { }
 

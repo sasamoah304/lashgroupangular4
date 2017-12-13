@@ -3,6 +3,12 @@
   display: inline-block;
   width: 100px
 }
+#service-type {
+   display: inline-flex;
+  width: 20px !important;
+  height: 15px;
+  min-width: 30px
+}
 .label {
   min-width: 100px
 }

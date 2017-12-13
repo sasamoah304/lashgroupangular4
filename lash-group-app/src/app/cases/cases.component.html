@@ -1,12 +1,12 @@
 <div layout-align="center center" class="main-div">
-<p>
+<p class=" label bg-white">
   Filter Options
 </p>
 <hr>
 <div>Service Types 
  <select  [(ngModel)]="filteredCases">
-    <option *ngFor="let service of caseservices" [ngValue]="service">
-        {{service}}
+    <option *ngFor="let item of caseservices" [ngValue]="item.service">
+        {{item.service}}
     </option>
 </select>
 </div>
@@ -14,8 +14,8 @@
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2 text-center key">
 			<span><b>Service Type</b> &nbsp;&nbsp; </span>
-			<span *ngFor="let service of caseservices">
-					<span class="label label-success"><div class="label label-success"></div></span>&nbsp;&nbsp; <span >{{service}}</span>
+			<span *ngFor="let item of caseservices">
+					<span [ngClass] = "getServiceClasses(item)" id="service-type"><div class="label label-success"></div></span>&nbsp;&nbsp; <span >{{item.name}}</span>
 			</span>
 		</div>	
 	</div>

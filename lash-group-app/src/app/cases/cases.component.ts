@@ -11,11 +11,12 @@ import { Response } from '@angular/http';
 })
 export class CasesComponent implements OnInit {
 
+  
+  cases: Array<any>;
+  totalRec : number;
+  page: number = 1;
+
   filteredCases = '';
-
-  // cases: any[] = [];
-
-  cases = this.onGet();
 
   caseservices = [
   {"id" :"14", "name" :"Benefit Verification", "service":"BV"}, 
@@ -81,7 +82,9 @@ export class CasesComponent implements OnInit {
        return returnValue;
     }
 
-  constructor(private serverService: ServerService) { }
+  constructor(private serverService: ServerService) { 
+   this.cases = new Array<any>();
+  }
 
   onSave(){
     this.serverService.storeServers(this.cases)
@@ -90,16 +93,39 @@ export class CasesComponent implements OnInit {
       (error) => console.log(error)
       );
   }
-   onGet(){
-    this.serverService.getServers()
-    .subscribe(
-           (servers: any[]) => this.cases = servers,
-      (error) => console.log(error)
-      );
+  //  onGet(){
+  //   this
+  //   .serverService
+  //   .getServers()
+  //   .subscribe(
+  //     (servers: any[]) => this.cases = servers,
+  //     (error) => console.log(error)
+  //     );
+  //   this.totalRec = this.cases.length;
+  //   console.log('****************************')
+  //   console.log(this.cases);
+  //   console.log(this.totalRec);
+  //   console.log(this.page);
+  // }
+
+   private loadCases() {
+      this
+          .serverService
+          .getServers()
+          .subscribe((resp: Response) => {
+              this.cases = resp.json();
+              this.totalRec = this.cases.length;
+              console.log(this.totalRec);
+              console.log(this.page);
+
+              //console.log(JSON.stringify(resp.json()));    
+          });
   }
 
   ngOnInit() {
-
+    // this.onGet();
+    console.log('Loading');
+    this.loadCases();
   }
 
 }

@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   background-color: rgba(143, 190, 220, 0.35);
+  margin:0;
+  padding:15px;
 }
 hr { background-color: black; height: 1px; border: 0; }
 
@@ -8,4 +10,8 @@ hr { background-color: black; height: 1px; border: 0; }
   background-color: #fff !important;
   color: #333;
   font-size: 13px;
+}
+
+.glyphicon {
+    font-size: 20px;
 }

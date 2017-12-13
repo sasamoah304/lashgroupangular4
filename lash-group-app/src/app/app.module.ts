@@ -9,6 +9,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CasesComponent } from './cases/cases.component';
 import { FilterPipe } from './filter.pipe';
 import { ServerService } from './server.service';
+import { HeaderComponent } from './header/header.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -17,11 +19,13 @@ import { ServerService } from './server.service';
     AppComponent,
     DashboardComponent,
     CasesComponent,
-    FilterPipe
+    FilterPipe,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    NgxPaginationModule,
     HttpModule
   ],
   providers: [ServerService],

@@ -14,17 +14,17 @@ export class ServerService {
 
   getServers(){
     return this.http.get('http://www.mocky.io/v2/590212490f00006b18d2cb05')
-    .map(
-        (response: Response) => {
-        const data = response.json();
-        return data;
-        }
-      )
-    .catch (
-        (error: Response) => {
-          return Observable.throw(error);
-        }
-      );
+    // .map(
+    //     (response: Response) => {
+    //     const data = response.json();
+    //     return data;
+    //     }
+    //   )
+    // .catch (
+    //     (error: Response) => {
+    //       return Observable.throw(error);
+    //     }
+    //   );
 
   }
 

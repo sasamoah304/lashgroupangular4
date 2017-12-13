@@ -79,3 +79,25 @@
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
 }
+
+#listing_pagination {
+    display: inline-block;
+}
+
+#listing_pagination {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+.ngx-pagination li {
+display: inline-block;
+color: black;
+float: left;
+padding: 8px 16px;
+text-decoration: none;
+}
+
+.case-name{
+  color:  rgb(21, 135, 255);
+}

@@ -11,6 +11,7 @@ import { FilterPipe } from './filter.pipe';
 import { ServerService } from './server.service';
 import { HeaderComponent } from './header/header.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DataService } from './data.service';
 
 
 
@@ -28,7 +29,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     NgxPaginationModule,
     HttpModule
   ],
-  providers: [ServerService],
+  providers: [ServerService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
